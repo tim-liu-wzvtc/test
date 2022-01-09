@@ -1,0 +1,117 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.App h1 {
+  margin: 10px;
+}
+
+h1::before {
+  content: url(/img/logo.png);
+  display: block;
+}
+
+.score {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.score .piece {
+  display: inline-block;
+}
+
+.next {
+  position: relative;
+  padding-right: 30px;
+}
+
+.next .piece {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+button {
+  padding: 5px;
+  font-size: 16px;
+  margin-left: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.game-board {
+  width: 310px;
+  height: 310px;
+  margin: auto;
+  border: 1px solid #ddd;
+  display: grid;
+  grid-template: repeat(8, 1fr) / repeat(8, 1fr);
+}
+
+.tile {
+  color: #ddd;
+  position: relative;
+}
+
+.tile.p0 {
+  background-color: #ddd;
+  color: #fff;
+}
+
+.tile .piece {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.tile.filled {
+  cursor: not-allowed;
+}
+
+.tile.empty {
+  text-align: right;
+  font-size: 1.2em;
+}
+
+/* Piece flip animation */
+.flip-enter {
+  transform: rotateY(90deg);
+}
+
+.flip-enter.flip-enter-active {
+  transform: rotateY(0deg);
+  transition: all 0.5s ease-in;
+}
+
+.flip-leave {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.flip-leave.flip-leave-active {
+  opacity: 0.01;
+  transform: rotateY(90deg);
+  transition: all 0.2s ease-in;
+}
+
+@media (min-width: 600px) {
+  .game-board {
+    width: 500px;
+    height: 500px;
+  }
+  .tile .piece {
+    font-size: 2.5rem;
+  }
+}
